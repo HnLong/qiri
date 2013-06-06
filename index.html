@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Qiri : 本系统构建在node.js上，是面向个人的知识管理系统，可以随时添加、编辑和查看你的页面，不断积累各方面知识。" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Qiri</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/yanxi-com/qiri">View on GitHub</a>
+
+          <h1 id="project_title">Qiri</h1>
+          <h2 id="project_tagline">本系统构建在node.js上，是面向个人的知识管理系统，可以随时添加、编辑和查看你的页面，不断积累各方面知识。</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/yanxi-com/qiri/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/yanxi-com/qiri/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="" class="anchor" href="#"><span class="octicon octicon-link"></span></a>七日知识管理系统</h1>
+
+<p>本系统构建在node.js上，是面向个人的知识管理系统，可以随时添加、编辑和查看你的页面，不断积累各方面知识。</p>
+
+<p>作为一个完全开源的 node.js 项目，希望对 node.js 感兴趣的朋友可以积极贡献，共同来完善。</p>
+
+<p>作者微博: <a href="http://weibo.com/yanxicom">http://weibo.com/yanxicom</a></p>
+
+<p>官方网站: <a href="http://qiri.com/">http://qiri.com/</a></p>
+
+<h6>
+<a name="-1" class="anchor" href="#-1"><span class="octicon octicon-link"></span></a>特性</h6>
+
+<ul>
+<li>移动设备支持良好，便于手机随时操作</li>
+<li>打开浏览器就能工作，手机和电脑通用</li>
+<li>私密性好，登陆后才能查看</li>
+<li>采用流行的Wiki语法，页面内容丰富多彩</li>
+<li>创建页面数量没有限制</li>
+<li>支持子页面，并能创建无限级子页面</li>
+</ul><h6>
+<a name="-2" class="anchor" href="#-2"><span class="octicon octicon-link"></span></a>示例</h6>
+
+<ul>
+<li><a href="http://qiri.com/">七日官方网站</a></li>
+<li>用本系统录入的图书 <a href="http://qiri.com/page/51ae14a1ce68cc121f000001">人性的弱点</a>
+</li>
+</ul><h3>
+<a name="-3" class="anchor" href="#-3"><span class="octicon octicon-link"></span></a>安装指南</h3>
+
+<ul>
+<li>安装 mongodb 数据库</li>
+<li>安装 node.js 环境</li>
+<li>下载本项目 <a href="https://github.com/yanxi-com/qiri/archive/master.zip">最新版 zip 压缩包</a>
+</li>
+<li>进入项目目录，运行 <code>npm install</code>
+</li>
+<li>创建 logs 文件夹，用于存放 log</li>
+<li>更改 config.js 的相关配置</li>
+<li>启动 node.js <code>node app.js</code>
+</li>
+</ul><h5>
+<a name="mongodb-" class="anchor" href="#mongodb-"><span class="octicon octicon-link"></span></a>Mongodb 索引</h5>
+
+<div class="highlight"><pre><span class="nx">db</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">ensureIndex</span><span class="p">(</span> <span class="p">{</span> <span class="nx">email</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">{</span><span class="nx">unique</span> <span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="p">);</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">pages</span><span class="p">.</span><span class="nx">ensureIndex</span><span class="p">(</span> <span class="p">{</span> <span class="nx">userId</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">);</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">pages</span><span class="p">.</span><span class="nx">ensureIndex</span><span class="p">(</span> <span class="p">{</span> <span class="nx">parentId</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">);</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">pages</span><span class="p">.</span><span class="nx">ensureIndex</span><span class="p">(</span> <span class="p">{</span> <span class="nx">parentId</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">title</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">{</span><span class="nx">unique</span> <span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="-4" class="anchor" href="#-4"><span class="octicon octicon-link"></span></a>技术一览</h3>
+
+<h6>
+<a name="-5" class="anchor" href="#-5"><span class="octicon octicon-link"></span></a>服务器端</h6>
+
+<ul>
+<li>
+<a href="http://nodejs.org">node.js</a> 首次将javascript用于服务器端，事件驱动，无阻挡IO</li>
+<li>
+<a href="https://npmjs.org/package/express">express</a> 目前node.js非常流行的一款 MVC 框架</li>
+<li>
+<a href="http://underscorejs.org/">underscore.js</a> 工具库（也用于客户端）</li>
+<li>
+<a href="https://npmjs.org/package/ejs">ejs</a> 模板语言</li>
+</ul><h6>
+<a name="-6" class="anchor" href="#-6"><span class="octicon octicon-link"></span></a>客户端</h6>
+
+<ul>
+<li>
+<a href="http://jquery.com/">jQuery</a> 神一样的框架，居家旅行必备</li>
+<li>
+<a href="http://jquerymobile.com/">jQuery Mobile</a> 适合PC和移动设备，不用做多个版本</li>
+<li>
+<a href="http://requirejs.org/">require.js</a> 所有javascript都统一管理，使html代码看起来非常简洁清晰</li>
+</ul><h6>
+<a name="-7" class="anchor" href="#-7"><span class="octicon octicon-link"></span></a>数据持久层</h6>
+
+<ul>
+<li>
+<a href="http://www.mongodb.org/">Mongodb</a> 面向文档的数据库</li>
+<li>
+<a href="http://mongoosejs.com/">Mongoose</a> 用于node.js的API接口，访问数据库就像操作本地对象</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Qiri maintained by <a href="https://github.com/yanxi-com">yanxi-com</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
